@@ -22,22 +22,19 @@
   > View on GitHub: https://tsch.js.org/15
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type Last<T extends any[]> = T extends [...infer _, infer L] ? L : never
-type Foo = Last<[1,2,3]>
+type Last<T extends any[]> = T extends [...infer _, infer L] ? L : never;
+type Foo = Last<[1, 2, 3]>;
 //   ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
   Expect<Equal<Last<[3, 2, 1]>, 1>>,
-  Expect<Equal<Last<[() => 123, { a: string }]>, { a: string }>>,
-]
-
-
+  Expect<Equal<Last<[() => 123, { a: string }]>, { a: string }>>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -45,4 +42,3 @@ type cases = [
   > View solutions: https://tsch.js.org/15/solutions
   > More Challenges: https://tsch.js.org
 */
-

@@ -33,43 +33,40 @@
   > View on GitHub: https://tsch.js.org/8
 */
 
-
 /* _____________ Your Code Here _____________ */
 
 type MyReadonly2<T extends Record<string, any>, K extends keyof T = keyof T> = {
-  readonly [TKey in keyof T as TKey extends K ? TKey : never]: T[TKey]
+  readonly [TKey in keyof T as TKey extends K ? TKey : never]: T[TKey];
 } & {
-  [TKey in keyof T as TKey extends K ? never : TKey]: T[TKey]
-}
+  [TKey in keyof T as TKey extends K ? never : TKey]: T[TKey];
+};
 
 /* _____________ Test Cases _____________ */
-import type { Alike, Expect } from '@type-challenges/utils'
+import type { Alike, Expect } from "@type-challenges/utils";
 
 type cases = [
   Expect<Alike<MyReadonly2<Todo1>, Readonly<Todo1>>>,
-  Expect<Alike<MyReadonly2<Todo1, 'title' | 'description'>, Expected>>,
-  Expect<Alike<MyReadonly2<Todo2, 'title' | 'description'>, Expected>>,
-]
+  Expect<Alike<MyReadonly2<Todo1, "title" | "description">, Expected>>,
+  Expect<Alike<MyReadonly2<Todo2, "title" | "description">, Expected>>
+];
 
 interface Todo1 {
-  title: string
-  description?: string
-  completed: boolean
+  title: string;
+  description?: string;
+  completed: boolean;
 }
 
 interface Todo2 {
-  readonly title: string
-  description?: string
-  completed: boolean
+  readonly title: string;
+  description?: string;
+  completed: boolean;
 }
 
 interface Expected {
-  readonly title: string
-  readonly description?: string
-  completed: boolean
+  readonly title: string;
+  readonly description?: string;
+  completed: boolean;
 }
-
-
 
 /* _____________ Further Steps _____________ */
 /*
@@ -77,4 +74,3 @@ interface Expected {
   > View solutions: https://tsch.js.org/8/solutions
   > More Challenges: https://tsch.js.org
 */
-

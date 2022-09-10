@@ -16,18 +16,19 @@
   > View on GitHub: https://tsch.js.org/459
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type Flatten<T extends unknown[], TResult extends unknown[] = []> = 
-  T extends [infer First, ...infer Rest]
-    ? First extends unknown[]
-      ? Flatten<[...First, ...Rest], TResult>
-      : Flatten<Rest, [...TResult, First]>
-    : TResult
+type Flatten<T extends unknown[], TResult extends unknown[] = []> = T extends [
+  infer First,
+  ...infer Rest
+]
+  ? First extends unknown[]
+    ? Flatten<[...First, ...Rest], TResult>
+    : Flatten<Rest, [...TResult, First]>
+  : TResult;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
   Expect<Equal<Flatten<[]>, []>>,
@@ -36,8 +37,13 @@ type cases = [
   Expect<Equal<Flatten<[1, 2, [3, 4]]>, [1, 2, 3, 4]>>,
   Expect<Equal<Flatten<[[[[5]]]]>, [5]>>,
   Expect<Equal<Flatten<[1, 2, [3, 4], [[[5]]]]>, [1, 2, 3, 4, 5]>>,
-  Expect<Equal<Flatten<[{ foo: 'bar'; 2: 10 }, 'foobar']>, [{ foo: 'bar'; 2: 10 }, 'foobar']>>,
-]
+  Expect<
+    Equal<
+      Flatten<[{ foo: "bar"; 2: 10 }, "foobar"]>,
+      [{ foo: "bar"; 2: 10 }, "foobar"]
+    >
+  >
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -45,4 +51,3 @@ type cases = [
   > View solutions: https://tsch.js.org/459/solutions
   > More Challenges: https://tsch.js.org
 */
-

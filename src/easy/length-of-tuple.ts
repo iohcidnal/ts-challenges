@@ -20,17 +20,21 @@
   > View on GitHub: https://tsch.js.org/18
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type Length<T extends readonly string[]> = T['length']
-
+type Length<T extends readonly string[]> = T["length"];
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
-const tesla = ['tesla', 'model 3', 'model X', 'model Y'] as const
-const spaceX = ['FALCON 9', 'FALCON HEAVY', 'DRAGON', 'STARSHIP', 'HUMAN SPACEFLIGHT'] as const
+const tesla = ["tesla", "model 3", "model X", "model Y"] as const;
+const spaceX = [
+  "FALCON 9",
+  "FALCON HEAVY",
+  "DRAGON",
+  "STARSHIP",
+  "HUMAN SPACEFLIGHT",
+] as const;
 
 type cases = [
   Expect<Equal<Length<typeof tesla>, 4>>,
@@ -38,10 +42,8 @@ type cases = [
   // @ts-expect-error
   Length<5>,
   // @ts-expect-error
-  Length<'hello world'>,
-]
-
-
+  Length<"hello world">
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -49,4 +51,3 @@ type cases = [
   > View solutions: https://tsch.js.org/18/solutions
   > More Challenges: https://tsch.js.org
 */
-

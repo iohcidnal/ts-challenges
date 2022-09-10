@@ -30,36 +30,33 @@
   > View on GitHub: https://tsch.js.org/62
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type LookUp<U, T> = U extends { type: T } ? U : never
+type LookUp<U, T> = U extends { type: T } ? U : never;
 
-type Foo = LookUp<Animal, 'cat'>
+type Foo = LookUp<Animal, "cat">;
 //   ^?
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 interface Cat {
-  type: 'cat'
-  breeds: 'Abyssinian' | 'Shorthair' | 'Curl' | 'Bengal'
+  type: "cat";
+  breeds: "Abyssinian" | "Shorthair" | "Curl" | "Bengal";
 }
 
 interface Dog {
-  type: 'dog'
-  breeds: 'Hound' | 'Brittany' | 'Bulldog' | 'Boxer'
-  color: 'brown' | 'white' | 'black'
+  type: "dog";
+  breeds: "Hound" | "Brittany" | "Bulldog" | "Boxer";
+  color: "brown" | "white" | "black";
 }
 
-type Animal = Cat | Dog
+type Animal = Cat | Dog;
 
 type cases = [
-  Expect<Equal<LookUp<Animal, 'dog'>, Dog>>,
-  Expect<Equal<LookUp<Animal, 'cat'>, Cat>>,
-]
-
-
+  Expect<Equal<LookUp<Animal, "dog">, Dog>>,
+  Expect<Equal<LookUp<Animal, "cat">, Cat>>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -67,4 +64,3 @@ type cases = [
   > View solutions: https://tsch.js.org/62/solutions
   > More Challenges: https://tsch.js.org
 */
-

@@ -29,31 +29,25 @@
   > View on GitHub: https://tsch.js.org/7
 */
 
-
 /* _____________ Your Code Here _____________ */
 
 type MyReadonly<T> = {
-  readonly [K in keyof T]: T[K]
-}
-
+  readonly [K in keyof T]: T[K];
+};
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
-type cases = [
-  Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>,
-]
+type cases = [Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>];
 
 interface Todo1 {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
   meta: {
-    author: string
-  }
+    author: string;
+  };
 }
-
-
 
 /* _____________ Further Steps _____________ */
 /*
@@ -61,4 +55,3 @@ interface Todo1 {
   > View solutions: https://tsch.js.org/7/solutions
   > More Challenges: https://tsch.js.org
 */
-

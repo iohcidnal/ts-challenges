@@ -28,45 +28,40 @@
   > View on GitHub: https://tsch.js.org/3
 */
 
-
 /* _____________ Your Code Here _____________ */
 
 type MyOmit<T extends Record<string, any>, K extends keyof T> = {
   // re-map keys using the `as` keyword and condition
-  [TKey in keyof T as TKey extends K ? never : TKey]: T[TKey]
-}
+  [TKey in keyof T as TKey extends K ? never : TKey]: T[TKey];
+};
 
-
-type Foo = MyOmit<Todo, 'completed'>
-
+type Foo = MyOmit<Todo, "completed">;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<Expected1, MyOmit<Todo, 'description'>>>,
-  Expect<Equal<Expected2, MyOmit<Todo, 'description' | 'completed'>>>,
-]
+  Expect<Equal<Expected1, MyOmit<Todo, "description">>>,
+  Expect<Equal<Expected2, MyOmit<Todo, "description" | "completed">>>
+];
 
 // @ts-expect-error
-type error = MyOmit<Todo, 'description' | 'invalid'>
+type error = MyOmit<Todo, "description" | "invalid">;
 
 interface Todo {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
 }
 
 interface Expected1 {
-  title: string
-  completed: boolean
+  title: string;
+  completed: boolean;
 }
 
 interface Expected2 {
-  title: string
+  title: string;
 }
-
-
 
 /* _____________ Further Steps _____________ */
 /*
@@ -74,4 +69,3 @@ interface Expected2 {
   > View solutions: https://tsch.js.org/3/solutions
   > More Challenges: https://tsch.js.org
 */
-

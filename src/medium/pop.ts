@@ -24,21 +24,17 @@
   > View on GitHub: https://tsch.js.org/16
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type Pop<T extends any[]> = T extends [...infer P, infer _] ? P : never
-
+type Pop<T extends any[]> = T extends [...infer P, infer _] ? P : never;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
   Expect<Equal<Pop<[3, 2, 1]>, [3, 2]>>,
-  Expect<Equal<Pop<['a', 'b', 'c', 'd']>, ['a', 'b', 'c']>>,
-]
-
-
+  Expect<Equal<Pop<["a", "b", "c", "d"]>, ["a", "b", "c"]>>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -46,4 +42,3 @@ type cases = [
   > View solutions: https://tsch.js.org/16/solutions
   > More Challenges: https://tsch.js.org
 */
-

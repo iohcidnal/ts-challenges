@@ -14,27 +14,44 @@
   > View on GitHub: https://tsch.js.org/296
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type Permutation<T, U = T> = [U] extends [never] 
-  ? [] 
-  : U extends T 
-    ? [U, ...Permutation<Exclude<T, U>>] 
-    : []
+type Permutation<T, U = T> = [U] extends [never]
+  ? []
+  : U extends T
+  ? [U, ...Permutation<Exclude<T, U>>]
+  : [];
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<Permutation<'A'>, ['A']>>,
-  Expect<Equal<Permutation<'A' | 'B' | 'C'>, ['A', 'B', 'C'] | ['A', 'C', 'B'] | ['B', 'A', 'C'] | ['B', 'C', 'A'] | ['C', 'A', 'B'] | ['C', 'B', 'A']>>,
-  Expect<Equal<Permutation<'B' | 'A' | 'C'>, ['A', 'B', 'C'] | ['A', 'C', 'B'] | ['B', 'A', 'C'] | ['B', 'C', 'A'] | ['C', 'A', 'B'] | ['C', 'B', 'A']>>,
+  Expect<Equal<Permutation<"A">, ["A"]>>,
+  Expect<
+    Equal<
+      Permutation<"A" | "B" | "C">,
+      | ["A", "B", "C"]
+      | ["A", "C", "B"]
+      | ["B", "A", "C"]
+      | ["B", "C", "A"]
+      | ["C", "A", "B"]
+      | ["C", "B", "A"]
+    >
+  >,
+  Expect<
+    Equal<
+      Permutation<"B" | "A" | "C">,
+      | ["A", "B", "C"]
+      | ["A", "C", "B"]
+      | ["B", "A", "C"]
+      | ["B", "C", "A"]
+      | ["C", "A", "B"]
+      | ["C", "B", "A"]
+    >
+  >,
   Expect<Equal<Permutation<boolean>, [false, true] | [true, false]>>,
-  Expect<Equal<Permutation<never>, []>>,
-]
-
-
+  Expect<Equal<Permutation<never>, []>>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -42,4 +59,3 @@ type cases = [
   > View solutions: https://tsch.js.org/296/solutions
   > More Challenges: https://tsch.js.org
 */
-

@@ -16,33 +16,32 @@
   > View on GitHub: https://tsch.js.org/119
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type ReplaceAll<S extends string, From extends string, To extends string> = 
-  From extends ''
-    ? S
-    : S extends `${infer F}${From}${infer R}`
-      ? `${F}${To}${ReplaceAll<R, From, To>}`
-      : S
-
+type ReplaceAll<
+  S extends string,
+  From extends string,
+  To extends string
+> = From extends ""
+  ? S
+  : S extends `${infer F}${From}${infer R}`
+  ? `${F}${To}${ReplaceAll<R, From, To>}`
+  : S;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<ReplaceAll<'foobar', 'bar', 'foo'>, 'foofoo'>>,
-  Expect<Equal<ReplaceAll<'foobar', 'bag', 'foo'>, 'foobar'>>,
-  Expect<Equal<ReplaceAll<'foobarbar', 'bar', 'foo'>, 'foofoofoo'>>,
-  Expect<Equal<ReplaceAll<'t y p e s', ' ', ''>, 'types'>>,
-  Expect<Equal<ReplaceAll<'foobarbar', '', 'foo'>, 'foobarbar'>>,
-  Expect<Equal<ReplaceAll<'barfoo', 'bar', 'foo'>, 'foofoo'>>,
-  Expect<Equal<ReplaceAll<'foobarfoobar', 'ob', 'b'>, 'fobarfobar'>>,
-  Expect<Equal<ReplaceAll<'foboorfoboar', 'bo', 'b'>, 'foborfobar'>>,
-  Expect<Equal<ReplaceAll<'', '', ''>, ''>>,
-]
-
-
+  Expect<Equal<ReplaceAll<"foobar", "bar", "foo">, "foofoo">>,
+  Expect<Equal<ReplaceAll<"foobar", "bag", "foo">, "foobar">>,
+  Expect<Equal<ReplaceAll<"foobarbar", "bar", "foo">, "foofoofoo">>,
+  Expect<Equal<ReplaceAll<"t y p e s", " ", "">, "types">>,
+  Expect<Equal<ReplaceAll<"foobarbar", "", "foo">, "foobarbar">>,
+  Expect<Equal<ReplaceAll<"barfoo", "bar", "foo">, "foofoo">>,
+  Expect<Equal<ReplaceAll<"foobarfoobar", "ob", "b">, "fobarfobar">>,
+  Expect<Equal<ReplaceAll<"foboorfoboar", "bo", "b">, "foborfobar">>,
+  Expect<Equal<ReplaceAll<"", "", "">, "">>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -50,4 +49,3 @@ type cases = [
   > View solutions: https://tsch.js.org/119/solutions
   > More Challenges: https://tsch.js.org
 */
-
